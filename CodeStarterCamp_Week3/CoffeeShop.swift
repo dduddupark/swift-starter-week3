@@ -36,17 +36,14 @@ class CoffeeShop {
     }
     
     func canOrder(_ coffees: [Coffee]) -> Bool {
-        
-        var canOrder = true
-        
         if barista == nil {
             print("현재 주문을 받을 수 있는 바리스타가 없어요ㅠㅠ")
-            canOrder = false
+            return false
         }
         
         if coffees.count == 0 {
             print("받은 주문이 없어요ㅠㅠ")
-            canOrder = false
+            return false
         }
         
         for coffee in coffees {
@@ -54,12 +51,11 @@ class CoffeeShop {
             
             guard menuOrNil != nil else {
                 print("존재 하지 않는 메뉴입니다ㅠㅠ")
-                canOrder = false
-                break
+                return false
             }
         }
         
-        return canOrder
+        return true
     }
     
     func make(_ coffees: [Coffee], for name: String) {
